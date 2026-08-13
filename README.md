@@ -1,5 +1,9 @@
 # FolderCheck
 
+[![Build](https://github.com/ZippyType/foldercheck/actions/workflows/build.yml/badge.svg)](https://github.com/ZippyType/foldercheck/actions/workflows/build.yml)
+[![Latest release](https://img.shields.io/github/v/release/ZippyType/foldercheck?include_prereleases&sort=semver)](https://github.com/ZippyType/foldercheck/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Compare two sets of files or folders side by side — size, file count, subfolder count, per-file diff (added / removed / modified), timestamps, extension breakdown, optional SHA-256 content check.
 
 Cross-platform: macOS, Windows, Linux. Written in Python + Tkinter.
