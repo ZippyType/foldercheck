@@ -1,0 +1,24 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# --- PyInstaller build artifacts ---
+build/
+dist/
+*.spec
+
+# --- macOS ---
+.DS_Store
+
+# --- Editors ---
+.idea/
+.vscode/
+
+# --- Abandoned Flutter attempt (kept locally, not shipped) ---
+.foldercheck_flutter/
+
+# --- Generated icon assets are checked in from icon/ ---
+# (nothing to ignore here — build_icon.py regenerates them on demand)

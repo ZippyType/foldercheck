@@ -1,0 +1,106 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']         # tagging a commit v1.0.0 (etc.) triggers a Release
+  pull_request:
+    branches: [main]
+  workflow_dispatch:      # lets you trigger a build manually from the Actions tab
+
+permissions:
+  contents: write         # needed to create/attach files to a Release
+
+jobs:
+  build:
+    name: Build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            artifact: FolderCheck-macOS.zip
+          - os: windows-latest
+            artifact: FolderCheck-Windows.exe
+          - os: ubuntu-latest
+            artifact: FolderCheck-Linux.tar.gz
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install system Tk (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y python3-tk
+
+      - name: Install Python deps
+        run: python -m pip install --upgrade pip pyinstaller pillow
+
+      - name: Regenerate icons
+        run: python build_icon.py
+
+      # ---------- macOS ----------
+      - name: Build (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          python -m PyInstaller --noconfirm --windowed --name FolderCheck \
+            --icon icon/FolderCheck.icns \
+            --osx-bundle-identifier com.aarongarsia.foldercheck \
+            foldercheck.py
+          cd dist
+          ditto -c -k --sequesterRsrc --keepParent FolderCheck.app ../FolderCheck-macOS.zip
+
+      # ---------- Windows ----------
+      - name: Build (Windows)
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: |
+          python -m PyInstaller --noconfirm --windowed --onefile --name FolderCheck ^
+            --icon icon\FolderCheck.ico ^
+            foldercheck.py
+          copy dist\FolderCheck.exe FolderCheck-Windows.exe
+
+      # ---------- Linux ----------
+      - name: Build (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          python -m PyInstaller --noconfirm --windowed --onefile --name FolderCheck \
+            foldercheck.py
+          cp icon/FolderCheck.png dist/FolderCheck.png
+          tar -C dist -czf FolderCheck-Linux.tar.gz FolderCheck FolderCheck.png
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.artifact }}
+          if-no-files-found: error
+
+  release:
+    name: Publish Release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Flatten artifacts
+        run: |
+          mkdir -p release
+          find artifacts -type f \( -name '*.zip' -o -name '*.exe' -o -name '*.tar.gz' \) \
+            -exec mv {} release/ \;
+          ls -la release/
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: FolderCheck ${{ github.ref_name }}
+          generate_release_notes: true
+          files: release/*
