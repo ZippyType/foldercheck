@@ -8,12 +8,26 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
   self.moduleName = @"FolderCheckApp";
-  // You can add your custom initial props in the dictionary below.
-  // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
   self.dependencyProvider = [RCTAppDependencyProvider new];
-  
-  return [super applicationDidFinishLaunching:notification];
+
+  [super applicationDidFinishLaunching:notification];
+
+  // Native macOS look: transparent titlebar, hidden title text, content
+  // flows behind the traffic-light zone. Also give the window sensible
+  // default dimensions and center it.
+  dispatch_async(dispatch_get_main_queue(), ^{
+    for (NSWindow *w in [NSApplication sharedApplication].windows) {
+      w.titlebarAppearsTransparent = YES;
+      w.titleVisibility = NSWindowTitleHidden;
+      w.styleMask |= NSWindowStyleMaskFullSizeContentView;
+      w.movableByWindowBackground = YES;
+      NSRect frame = w.frame;
+      frame.size = NSMakeSize(1120, 760);
+      [w setFrame:frame display:YES animate:NO];
+      [w center];
+    }
+  });
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

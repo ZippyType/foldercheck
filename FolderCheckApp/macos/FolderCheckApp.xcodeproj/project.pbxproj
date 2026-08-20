@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5142014D2437B4B30078DB4F /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5142014C2437B4B30078DB4F /* AppDelegate.mm */; };
+		1991B3BA96D843CFBB4E3484 /* FileDialog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D274B3FCD5047F4A8F6B8C5 /* FileDialog.mm */; };
+		A19B84A9AA2A40BEBE360ABC /* Scanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = D1EB34FB1F754B7F86C14382 /* Scanner.mm */; };
 		514201522437B4B40078DB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514201512437B4B40078DB4F /* Assets.xcassets */; };
+		AEA136C98BED442096A6E8E1 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 53A79470396C4456933478AB /* AppIcon.icns */; };
 		514201552437B4B40078DB4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514201532437B4B40078DB4F /* Main.storyboard */; };
 		514201582437B4B40078DB4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 514201572437B4B40078DB4F /* main.m */; };
 /* End PBXBuildFile section */
@@ -24,6 +27,11 @@
 		514201572437B4B40078DB4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		514201592437B4B40078DB4F /* FolderCheckApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FolderCheckApp.entitlements; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		53A79470396C4456933478AB /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		D897CBBFD1B3424A908B9B7A /* FileDialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileDialog.h; sourceTree = "<group>"; };
+		2D274B3FCD5047F4A8F6B8C5 /* FileDialog.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FileDialog.mm; sourceTree = "<group>"; };
+		86E91754487742AAA92F59DF /* Scanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scanner.h; sourceTree = "<group>"; };
+		D1EB34FB1F754B7F86C14382 /* Scanner.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Scanner.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,11 @@
 				514201562437B4B40078DB4F /* Info.plist */,
 				514201572437B4B40078DB4F /* main.m */,
 				514201592437B4B40078DB4F /* FolderCheckApp.entitlements */,
+				53A79470396C4456933478AB /* AppIcon.icns */,
+				D897CBBFD1B3424A908B9B7A /* FileDialog.h */,
+				2D274B3FCD5047F4A8F6B8C5 /* FileDialog.mm */,
+				86E91754487742AAA92F59DF /* Scanner.h */,
+				D1EB34FB1F754B7F86C14382 /* Scanner.mm */,
 			);
 			path = "FolderCheckApp-macOS";
 			sourceTree = "<group>";
@@ -186,6 +199,7 @@
 			files = (
 				514201522437B4B40078DB4F /* Assets.xcassets in Resources */,
 				514201552437B4B40078DB4F /* Main.storyboard in Resources */,
+				AEA136C98BED442096A6E8E1 /* AppIcon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +298,8 @@
 			files = (
 				514201582437B4B40078DB4F /* main.m in Sources */,
 				5142014D2437B4B30078DB4F /* AppDelegate.mm in Sources */,
+				1991B3BA96D843CFBB4E3484 /* FileDialog.mm in Sources */,
+				A19B84A9AA2A40BEBE360ABC /* Scanner.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +331,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aarongarsia.foldercheck";
 				PRODUCT_NAME = FolderCheckApp;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -336,7 +352,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aarongarsia.foldercheck";
 				PRODUCT_NAME = FolderCheckApp;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -358,7 +374,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aarongarsia.foldercheck";
 				PRODUCT_NAME = FolderCheckApp;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -380,7 +396,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aarongarsia.foldercheck";
 				PRODUCT_NAME = FolderCheckApp;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
