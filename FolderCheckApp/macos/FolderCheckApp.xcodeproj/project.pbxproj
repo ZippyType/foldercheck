@@ -7,17 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5142014D2437B4B30078DB4F /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5142014C2437B4B30078DB4F /* AppDelegate.mm */; };
+		0AD6F9D28A25FC20CEE194DC /* libPods-FolderCheckApp-macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70126F15069D03A9EA34893F /* libPods-FolderCheckApp-macOS.a */; };
 		1991B3BA96D843CFBB4E3484 /* FileDialog.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D274B3FCD5047F4A8F6B8C5 /* FileDialog.mm */; };
-		A19B84A9AA2A40BEBE360ABC /* Scanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = D1EB34FB1F754B7F86C14382 /* Scanner.mm */; };
+		33F592E47E0465428CD10145 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A2900B538B4F546F431F22F7 /* PrivacyInfo.xcprivacy */; };
+		5142014D2437B4B30078DB4F /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5142014C2437B4B30078DB4F /* AppDelegate.mm */; };
 		514201522437B4B40078DB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514201512437B4B40078DB4F /* Assets.xcassets */; };
-		AEA136C98BED442096A6E8E1 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 53A79470396C4456933478AB /* AppIcon.icns */; };
 		514201552437B4B40078DB4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514201532437B4B40078DB4F /* Main.storyboard */; };
 		514201582437B4B40078DB4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 514201572437B4B40078DB4F /* main.m */; };
+		6AA48160069CF066395E0C6D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A2900B538B4F546F431F22F7 /* PrivacyInfo.xcprivacy */; };
+		A19B84A9AA2A40BEBE360ABC /* Scanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = D1EB34FB1F754B7F86C14382 /* Scanner.mm */; };
+		AEA136C98BED442096A6E8E1 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 53A79470396C4456933478AB /* AppIcon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13B07F961A680F5B00A75B9A /* FolderCheckApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FolderCheckApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D274B3FCD5047F4A8F6B8C5 /* FileDialog.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FileDialog.mm; sourceTree = "<group>"; };
+		4EE0954E32CA9D2EA25C26D3 /* Pods-FolderCheckApp-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolderCheckApp-macOS.release.xcconfig"; path = "Target Support Files/Pods-FolderCheckApp-macOS/Pods-FolderCheckApp-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		514201492437B4B30078DB4F /* FolderCheckApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FolderCheckApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5142014B2437B4B30078DB4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5142014C2437B4B30078DB4F /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -26,12 +31,14 @@
 		514201562437B4B40078DB4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		514201572437B4B40078DB4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		514201592437B4B40078DB4F /* FolderCheckApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FolderCheckApp.entitlements; sourceTree = "<group>"; };
-		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		53A79470396C4456933478AB /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
-		D897CBBFD1B3424A908B9B7A /* FileDialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileDialog.h; sourceTree = "<group>"; };
-		2D274B3FCD5047F4A8F6B8C5 /* FileDialog.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FileDialog.mm; sourceTree = "<group>"; };
+		5A00FCC0D265AF125B143681 /* Pods-FolderCheckApp-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FolderCheckApp-macOS.debug.xcconfig"; path = "Target Support Files/Pods-FolderCheckApp-macOS/Pods-FolderCheckApp-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		70126F15069D03A9EA34893F /* libPods-FolderCheckApp-macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FolderCheckApp-macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E91754487742AAA92F59DF /* Scanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scanner.h; sourceTree = "<group>"; };
+		A2900B538B4F546F431F22F7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		D1EB34FB1F754B7F86C14382 /* Scanner.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Scanner.mm; sourceTree = "<group>"; };
+		D897CBBFD1B3424A908B9B7A /* FileDialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileDialog.h; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD6F9D28A25FC20CEE194DC /* libPods-FolderCheckApp-macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				70126F15069D03A9EA34893F /* libPods-FolderCheckApp-macOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -79,6 +88,16 @@
 			path = "FolderCheckApp-macOS";
 			sourceTree = "<group>";
 		};
+		60F18977440A684861D4702B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5A00FCC0D265AF125B143681 /* Pods-FolderCheckApp-macOS.debug.xcconfig */,
+				4EE0954E32CA9D2EA25C26D3 /* Pods-FolderCheckApp-macOS.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +112,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				A2900B538B4F546F431F22F7 /* PrivacyInfo.xcprivacy */,
+				60F18977440A684861D4702B /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -115,7 +136,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FolderCheckApp-iOS" */;
 			buildPhases = (
-				7BC40D98CAD1562CFD247217 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -139,6 +159,8 @@
 				514201462437B4B30078DB4F /* Frameworks */,
 				514201472437B4B30078DB4F /* Resources */,
 				381D8A6E24576A4E00465D17 /* Bundle React Native code and images */,
+				12940B9016BAF977D30308E7 /* [CP] Embed Pods Frameworks */,
+				5BF50FC0D7188B7B7EF72C44 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33F592E47E0465428CD10145 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +223,7 @@
 				514201522437B4B40078DB4F /* Assets.xcassets in Resources */,
 				514201552437B4B40078DB4F /* Main.storyboard in Resources */,
 				AEA136C98BED442096A6E8E1 /* AppIcon.icns in Resources */,
+				6AA48160069CF066395E0C6D /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +244,24 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native-macos/scripts/react-native-xcode.sh\n";
 		};
+		12940B9016BAF977D30308E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FolderCheckApp-macOS/Pods-FolderCheckApp-macOS-frameworks.sh",
+				"${PODS_ROOT}/hermes-engine/destroot/Library/Frameworks/macosx/hermes.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FolderCheckApp-macOS/Pods-FolderCheckApp-macOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1A938104A937498D81B3BD3B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -235,7 +277,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Shared-FolderCheckApp-macOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FolderCheckApp-macOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -260,26 +302,30 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native-macos/scripts/react-native-xcode.sh\n";
 		};
-		7BC40D98CAD1562CFD247217 /* [CP] Check Pods Manifest.lock */ = {
+		5BF50FC0D7188B7B7EF72C44 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-FolderCheckApp-macOS/Pods-FolderCheckApp-macOS-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RCT-Folly/RCT-Folly_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/boost/boost_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/glog/glog_privacy.bundle",
 			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Shared-FolderCheckApp-iOS-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCT-Folly_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/boost_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/glog_privacy.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FolderCheckApp-macOS/Pods-FolderCheckApp-macOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -331,7 +377,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aarongarsia.foldercheck";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aarongarsia.foldercheck;
 				PRODUCT_NAME = FolderCheckApp;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -352,7 +398,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aarongarsia.foldercheck";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aarongarsia.foldercheck;
 				PRODUCT_NAME = FolderCheckApp;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -361,6 +407,7 @@
 		};
 		5142015B2437B4B40078DB4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A00FCC0D265AF125B143681 /* Pods-FolderCheckApp-macOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -374,7 +421,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aarongarsia.foldercheck";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aarongarsia.foldercheck;
 				PRODUCT_NAME = FolderCheckApp;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -384,6 +431,7 @@
 		};
 		5142015C2437B4B40078DB4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EE0954E32CA9D2EA25C26D3 /* Pods-FolderCheckApp-macOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -396,7 +444,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.aarongarsia.foldercheck";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aarongarsia.foldercheck;
 				PRODUCT_NAME = FolderCheckApp;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -408,7 +456,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -453,13 +501,16 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -468,7 +519,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -506,12 +557,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
