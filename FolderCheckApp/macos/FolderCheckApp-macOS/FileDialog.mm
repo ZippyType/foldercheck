@@ -77,4 +77,23 @@ RCT_EXPORT_METHOD(saveFile:(NSDictionary *)opts
   resolve(panel.URL.path ?: [NSNull null]);
 }
 
+/// Write UTF-8 text to an absolute path. Used for CSV export after
+/// saveFile: has returned a chosen destination.
+RCT_EXPORT_METHOD(writeTextFile:(NSString *)path
+                    contents:(NSString *)contents
+                    resolver:(RCTPromiseResolveBlock)resolve
+                    rejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSError *err = nil;
+  BOOL ok = [contents writeToFile:path
+                        atomically:YES
+                          encoding:NSUTF8StringEncoding
+                             error:&err];
+  if (!ok) {
+    reject(@"write_failed", err.localizedDescription ?: @"Failed to write file", err);
+    return;
+  }
+  resolve(@YES);
+}
+
 @end
