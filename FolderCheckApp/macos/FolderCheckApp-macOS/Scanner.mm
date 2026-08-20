@@ -1,8 +1,16 @@
 // Scanner — Objective-C++ implementation.
 //
-// Exposes two methods to JS:
-//   scanPaths(paths, sideLabel) → SideResult  (aggregate scan of many roots)
-//   diffSides(a, b, deep)       → DiffRow[]   (compare two SideResults)
+// Exposes one method to JS:
+//   compare(aPaths, bPaths, deep) → { a: SideStats, b: SideStats, rows: DiffRow[] }
+//
+// Scanning AND diffing both happen natively in this one call. This matters:
+// the per-file "entries" index (one dictionary key per file) used to be
+// returned to JS and re-passed into a separate diffSides() call, but Hermes
+// caps a single JS object at 196,607 properties — a folder with more files
+// than that would blow up with "Property storage exceeds 196607 properties"
+// the moment the entries dictionary crossed the bridge. Keeping entries
+// native-only and only returning the (array-based, not property-based)
+// diff rows avoids that ceiling entirely.
 //
 // Emits `scanProgress` events during long scans so the UI can show live
 // counts. Runs each JS call on a background queue so the UI thread stays
@@ -182,13 +190,15 @@ static NSString *SHA256OfFileAtPath(NSString *path) {
                          bytes:[counters[@"size"] longLongValue]];
 }
 
-// ---- exported methods ----
+// ---- internal helper ----
 
-/// Scan one side. paths[] can mix files and folders.
-RCT_EXPORT_METHOD(scanPaths:(NSArray<NSString *> *)paths
-                       side:(NSString *)side
-                    resolver:(RCTPromiseResolveBlock)resolve
-                    rejecter:(RCTPromiseRejectBlock)reject)
+/// Scan one side (paths[] can mix files and folders). Returns the JS-safe
+/// stats dictionary (no per-file entries — that stays native-only) via
+/// `statsOut`, and the native-only per-file index via `entriesOut`.
+- (void)scanSide:(NSArray<NSString *> *)paths
+             side:(NSString *)side
+        statsOut:(NSDictionary **)statsOut
+      entriesOut:(NSDictionary **)entriesOut
 {
   NSMutableDictionary *entries  = [NSMutableDictionary dictionary];
   NSMutableDictionary *counters = [@{
@@ -228,7 +238,7 @@ RCT_EXPORT_METHOD(scanPaths:(NSArray<NSString *> *)paths
     }
   }
 
-  resolve(@{
+  *statsOut = @{
     @"fileInputs":   counters[@"fileInputs"],
     @"folderInputs": counters[@"folderInputs"],
     @"files":        counters[@"files"],
@@ -242,20 +252,14 @@ RCT_EXPORT_METHOD(scanPaths:(NSArray<NSString *> *)paths
       @"size": counters[@"largestBytes"],
     },
     @"sha256":       sha256,
-    @"entries":      entries,
-  });
+  };
+  *entriesOut = entries;
 }
 
-/// Compute a per-file diff between two SideResult.entries dictionaries.
-RCT_EXPORT_METHOD(diffSides:(NSDictionary *)a
-                          b:(NSDictionary *)b
-                       deep:(BOOL)deep
-                    resolver:(RCTPromiseResolveBlock)resolve
-                    rejecter:(RCTPromiseRejectBlock)reject)
-{
-  NSDictionary *ea = a[@"entries"] ?: @{};
-  NSDictionary *eb = b[@"entries"] ?: @{};
-
+/// Diff two native-only entries dictionaries into a JS-safe array of rows.
+/// An array has no per-object property-count ceiling the way a dictionary
+/// does, so this is safe to return even for huge folders.
+- (NSArray *)diffEntries:(NSDictionary *)ea b:(NSDictionary *)eb deep:(BOOL)deep {
   NSMutableSet *keys = [NSMutableSet setWithArray:ea.allKeys];
   [keys addObjectsFromArray:eb.allKeys];
   NSArray *sortedKeys = [keys.allObjects
@@ -303,7 +307,33 @@ RCT_EXPORT_METHOD(diffSides:(NSDictionary *)a
       @"note":   note,
     }];
   }
-  resolve(rows);
+  return rows;
+}
+
+// ---- exported methods ----
+
+/// Scan both sides and diff them, entirely natively. Only the aggregate
+/// stats and the (array-based) diff rows cross the bridge — the per-file
+/// entries index never does, so there's no risk of hitting Hermes' per-
+/// object property ceiling on very large folders.
+RCT_EXPORT_METHOD(compare:(NSArray<NSString *> *)aPaths
+                    bPaths:(NSArray<NSString *> *)bPaths
+                      deep:(BOOL)deep
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSDictionary *statsA = nil, *entriesA = nil;
+  NSDictionary *statsB = nil, *entriesB = nil;
+  [self scanSide:aPaths side:@"A" statsOut:&statsA entriesOut:&entriesA];
+  [self scanSide:bPaths side:@"B" statsOut:&statsB entriesOut:&entriesB];
+
+  NSArray *rows = [self diffEntries:entriesA b:entriesB deep:deep];
+
+  resolve(@{
+    @"a":    statsA,
+    @"b":    statsB,
+    @"rows": rows,
+  });
 }
 
 @end

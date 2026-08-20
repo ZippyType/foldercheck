@@ -34,7 +34,11 @@ export interface FileEntry {
   mtime: number; // unix seconds
 }
 
-export interface SideResult {
+// Aggregate stats for one side. Note: no per-file `entries` here — that
+// index stays native-only (see Scanner.mm) because a folder with more than
+// ~196,607 files would exceed Hermes' per-object property ceiling if we
+// tried to ship it across the bridge as a plain JS object.
+export interface SideStats {
   fileInputs: number;
   folderInputs: number;
   files: number;
@@ -45,7 +49,6 @@ export interface SideResult {
   extensions: Record<string, number>;
   largestFile: { name: string; size: number };
   sha256: string;
-  entries: Record<string, FileEntry>;
 }
 
 export type DiffStatus = 'added' | 'removed' | 'modified' | 'unchanged';
@@ -58,18 +61,21 @@ export interface DiffRow {
   note: string;
 }
 
+export interface CompareResult {
+  a: SideStats;
+  b: SideStats;
+  rows: DiffRow[];
+}
+
 interface ScannerModule {
-  scanPaths(paths: string[], side: 'A' | 'B'): Promise<SideResult>;
-  diffSides(a: SideResult, b: SideResult, deep: boolean): Promise<DiffRow[]>;
+  compare(aPaths: string[], bPaths: string[], deep: boolean): Promise<CompareResult>;
 }
 
 const ScannerNM = NativeModules.Scanner as ScannerModule;
 
 export const Scanner = {
-  scanPaths: (paths: string[], side: 'A' | 'B') =>
-    ScannerNM.scanPaths(paths, side),
-  diffSides: (a: SideResult, b: SideResult, deep: boolean) =>
-    ScannerNM.diffSides(a, b, deep),
+  compare: (aPaths: string[], bPaths: string[], deep: boolean) =>
+    ScannerNM.compare(aPaths, bPaths, deep),
 };
 
 const scannerEvents = new NativeEventEmitter(NativeModules.Scanner);

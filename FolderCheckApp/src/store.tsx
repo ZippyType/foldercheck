@@ -12,10 +12,11 @@ import React, {
 } from 'react';
 
 import {
+  CompareResult,
   DiffRow,
   Scanner,
   ScanProgress,
-  SideResult,
+  SideStats,
   onScanProgress,
 } from './native';
 
@@ -24,12 +25,6 @@ export interface Filters {
   removed: boolean;
   modified: boolean;
   unchanged: boolean;
-}
-
-export interface CompareResult {
-  a: SideResult;
-  b: SideResult;
-  rows: DiffRow[];
 }
 
 interface State {
@@ -146,10 +141,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     dispatch({ type: 'progress', value: 'Preparing…' });
     dispatch({ type: 'status', value: 'Scanning…' });
     try {
-      const a = await Scanner.scanPaths(state.aInputs, 'A');
-      const b = await Scanner.scanPaths(state.bInputs, 'B');
-      dispatch({ type: 'progress', value: 'Comparing files…' });
-      const rows = await Scanner.diffSides(a, b, state.deep);
+      const { a, b, rows } = await Scanner.compare(
+        state.aInputs,
+        state.bInputs,
+        state.deep,
+      );
       dispatch({ type: 'result', value: { a, b, rows } });
       const added = rows.filter(r => r.status === 'added').length;
       const removed = rows.filter(r => r.status === 'removed').length;
@@ -204,4 +200,4 @@ function formatBytes(n: number): string {
   return `${n} B`;
 }
 
-export type { DiffRow, SideResult };
+export type { CompareResult, DiffRow, SideStats };
